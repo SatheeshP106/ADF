@@ -204,6 +204,25 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlTable5')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "stage",
+					"table": "customer"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DelimitedText1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -243,6 +262,31 @@
 						"type": "String"
 					}
 				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText10')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "inputassessment"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
 			},
 			"dependsOn": []
 		},
@@ -1012,211 +1056,6 @@
 				"[concat(variables('factoryId'), '/datasets/DelimitedText8')]",
 				"[concat(variables('factoryId'), '/datasets/DelimitedText5')]",
 				"[concat(variables('factoryId'), '/datasets/DelimitedText7')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline5')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copying Data from API to DB",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "RestSource",
-								"httpRequestTimeout": "00:01:40",
-								"requestInterval": "00.00:00:00.010",
-								"requestMethod": "GET",
-								"paginationRules": {
-									"supportRFC5988": "true"
-								}
-							},
-							"sink": {
-								"type": "AzureSqlSink",
-								"writeBehavior": "insert",
-								"sqlWriterUseTableLock": false
-							},
-							"enableStaging": false
-						},
-						"inputs": [
-							{
-								"referenceName": "RestResource1",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "AzureSqlTable4",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "User Transformation",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Copying Data from API to DB",
-								"dependencyConditions": [
-									"Completed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[UsersTransformation]"
-						},
-						"linkedServiceName": {
-							"referenceName": "linkedService1",
-							"type": "LinkedServiceReference"
-						}
-					},
-					{
-						"name": "UserFetch",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "User Transformation",
-								"dependencyConditions": [
-									"Completed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[Usersfetch]"
-						},
-						"linkedServiceName": {
-							"referenceName": "linkedService1",
-							"type": "LinkedServiceReference"
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"annotations": [],
-				"lastPublishTime": "2025-03-06T09:56:02Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/RestResource1')]",
-				"[concat(variables('factoryId'), '/datasets/AzureSqlTable4')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "MappingDataFlow",
-				"typeProperties": {
-					"sources": [
-						{
-							"dataset": {
-								"referenceName": "AzureSqlTable2",
-								"type": "DatasetReference"
-							},
-							"name": "parent"
-						},
-						{
-							"dataset": {
-								"referenceName": "AzureSqlTable3",
-								"type": "DatasetReference"
-							},
-							"name": "child"
-						}
-					],
-					"sinks": [
-						{
-							"dataset": {
-								"referenceName": "DelimitedText9",
-								"type": "DatasetReference"
-							},
-							"name": "sink1"
-						}
-					],
-					"transformations": [
-						{
-							"name": "join1"
-						}
-					],
-					"scriptLines": [
-						"source(output(",
-						"          id as integer,",
-						"          name as string,",
-						"          age as integer",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     format: 'table') ~> parent",
-						"source(output(",
-						"          id as integer,",
-						"          parent_id as integer,",
-						"          description as string",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     format: 'table') ~> child",
-						"parent, child join(parent@id == parent_id,",
-						"     joinType:'inner',",
-						"     matchType:'exact',",
-						"     ignoreSpaces: false,",
-						"     broadcast: 'auto')~> join1",
-						"join1 sink(allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     input(",
-						"          Region as string,",
-						"          Country as string,",
-						"          {Item Type} as string,",
-						"          {Sales Channel} as string,",
-						"          {Order Priority} as string,",
-						"          {Order Date} as string,",
-						"          {Order ID} as string,",
-						"          {Ship Date} as string,",
-						"          {Units Sold} as string,",
-						"          {Unit Price} as string,",
-						"          {Unit Cost} as string,",
-						"          {Total Profit} as string,",
-						"          {User Id} as string",
-						"     ),",
-						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> sink1"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/AzureSqlTable2')]",
-				"[concat(variables('factoryId'), '/datasets/AzureSqlTable3')]",
-				"[concat(variables('factoryId'), '/datasets/DelimitedText9')]"
 			]
 		}
 	]
