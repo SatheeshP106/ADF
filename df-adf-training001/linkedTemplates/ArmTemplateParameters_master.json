@@ -1,0 +1,153 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "df-adf-training001"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage2_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage3_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage4_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage5_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage6_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage7_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage8_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage9_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase2_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase3_password": {
+			"value": ""
+		},
+		"GitHub1_credential": {
+			"value": ""
+		},
+		"RestService1_password": {
+			"value": ""
+		},
+		"SqlServer1_password": {
+			"value": ""
+		},
+		"SqlServer2_password": {
+			"value": ""
+		},
+		"linkedService1_password": {
+			"value": ""
+		},
+		"linkedService2_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://satheeshpstorage.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://satheeshpstorage.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "dbs-practise-1.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "practisedb"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "satheeshp"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_server": {
+			"value": "dbs-practise-1.database.windows.net"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_database": {
+			"value": "practisedb"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_userName": {
+			"value": "satheeshp"
+		},
+		"AzureSqlDatabase3_properties_typeProperties_server": {
+			"value": "dbs-practise-1.database.windows.net"
+		},
+		"AzureSqlDatabase3_properties_typeProperties_database": {
+			"value": "practisedb"
+		},
+		"AzureSqlDatabase3_properties_typeProperties_userName": {
+			"value": "satheeshp"
+		},
+		"GitHub1_properties_typeProperties_username": {
+			"value": "satheeshp"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": "https://jsonplaceholder.typicode.com/users"
+		},
+		"RestService1_properties_typeProperties_userName": {
+			"value": "satheeshp"
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"value": "server1"
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"value": "testdb1"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
+			"value": "satheeshp"
+		},
+		"SqlServer2_properties_typeProperties_server": {
+			"value": "server2"
+		},
+		"SqlServer2_properties_typeProperties_database": {
+			"value": "testdbserver"
+		},
+		"SqlServer2_properties_typeProperties_userName": {
+			"value": "satheeshp"
+		},
+		"linkedService1_properties_typeProperties_server": {
+			"value": "dbs-practise-1.database.windows.net"
+		},
+		"linkedService1_properties_typeProperties_database": {
+			"value": "practisedb"
+		},
+		"linkedService1_properties_typeProperties_userName": {
+			"value": "satheeshp"
+		},
+		"linkedService2_properties_typeProperties_server": {
+			"value": "dbs-practise-1.database.windows.net"
+		},
+		"linkedService2_properties_typeProperties_database": {
+			"value": "practisedb"
+		},
+		"linkedService2_properties_typeProperties_userName": {
+			"value": "satheeshp"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
