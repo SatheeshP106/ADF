@@ -75,7 +75,7 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dbo",
+			"schema": "stage",
 			"table": "users"
 		}
 	},
