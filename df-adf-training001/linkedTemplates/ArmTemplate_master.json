@@ -95,6 +95,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'linkedService2'"
 		},
+		"AzureBlobStorage11_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage11'"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://satheeshpstorage.dfs.core.windows.net/"
@@ -390,6 +394,9 @@
 					},
 					"linkedService2_password": {
 						"value": "[parameters('linkedService2_password')]"
+					},
+					"AzureBlobStorage11_connectionString": {
+						"value": "[parameters('AzureBlobStorage11_connectionString')]"
 					},
 					"linkedService1_properties_typeProperties_server": {
 						"value": "[parameters('linkedService1_properties_typeProperties_server')]"
