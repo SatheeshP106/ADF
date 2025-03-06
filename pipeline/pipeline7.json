@@ -68,7 +68,7 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"fileListPath": "inputassessment",
-										"enablePartitionDiscovery": false
+										"enablePartitionDiscovery": true
 									},
 									"formatSettings": {
 										"type": "DelimitedTextReadSettings"
