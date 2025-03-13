@@ -26,7 +26,10 @@
 							"type": "SnowflakeImportCopyCommand"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator"
+					}
 				},
 				"inputs": [
 					{
