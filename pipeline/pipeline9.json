@@ -26,7 +26,14 @@
 							"type": "SnowflakeImportCopyCommand"
 						}
 					},
-					"enableStaging": false,
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "linkedService3",
+							"type": "LinkedServiceReference"
+						},
+						"path": "input"
+					},
 					"translator": {
 						"type": "TabularTranslator",
 						"mappings": [
