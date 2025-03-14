@@ -1,0 +1,15 @@
+{
+	"name": "DSEVENTLOCAL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSEventLocalSQL",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"dataset": "@item()"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}
