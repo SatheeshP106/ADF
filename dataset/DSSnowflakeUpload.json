@@ -1,0 +1,12 @@
+{
+	"name": "DSSnowflakeUpload",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSSnowflakeEvent",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeV2Table",
+		"schema": []
+	}
+}
