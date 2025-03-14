@@ -5,7 +5,15 @@
 			"referenceName": "LSEventLocalSQL",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"dataset": "@item()"
+				"dataset": {
+					"value": "@dataset().item",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"item": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
