@@ -32,6 +32,12 @@
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
+								"sink": {
+									"type": "SnowflakeV2Sink",
+									"importSettings": {
+										"type": "SnowflakeImportCopyCommand"
+									}
+								},
 								"enableStaging": true,
 								"stagingSettings": {
 									"linkedServiceName": {
@@ -43,6 +49,12 @@
 							"inputs": [
 								{
 									"referenceName": "DSEVENTLOCAL",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DSSnowflakeUpload",
 									"type": "DatasetReference"
 								}
 							]
